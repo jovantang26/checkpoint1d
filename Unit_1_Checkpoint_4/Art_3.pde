@@ -1,6 +1,5 @@
 void art3() {
   background(purple);
   
-  previousButton(); 
-  nextButton(); 
+  previousButton(10, height-110); 
 }

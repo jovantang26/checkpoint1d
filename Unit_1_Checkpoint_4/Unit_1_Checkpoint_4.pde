@@ -23,6 +23,8 @@ color indigo = #0000FF;
 
 PFont font;
 
+boolean mKey; 
+
 void setup() {
   size(1200, 800); //center (600, 400);
 
@@ -47,16 +49,38 @@ void draw() {
     println("Error: mode = " + mode);
   }
   println("mode = " + mode); //monitoring for errors
+  println(mKey);
 }
 
 void mousePressed() {
   if (mode == MAINMENU) {
     if (mouseX > 450 && mouseX < 750 && mouseY > 325 && mouseY < 475) {
       mode = ART1;
-    } else if (mode == ART1) {
-      mode = ART2;
-    } else if (mode == ART2) {
-      mode = ART3;
+    }
+  } else {
+    if (mouseX > width-210 && mouseX < width-10 && mouseY > height-110 && mouseY < height-10) {
+      if (mode >= 3) {
+        mode = 3;
+      } else {
+        mode++;
+      }
+    }
+    if (mouseX > 10 && mouseX < 210 && mouseY > height-110 && mouseY < height-10) {
+      if (mode <= 1) {
+        mode = 1;
+      } else {
+        mode--;
+      }
     }
   }
 }
+
+void keyPressed() {
+  mKey = false; 
+  if (key == 'M' || key == 'm') mKey = true; 
+  if (mKey == true && mode != MAINMENU) mode = MAINMENU; 
+} 
+
+void keyReleased() {
+  if (key == 'M' || key == 'm') mKey = false; 
+} 
