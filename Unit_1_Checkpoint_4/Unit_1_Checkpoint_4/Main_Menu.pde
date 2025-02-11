@@ -22,6 +22,8 @@ void viewbutton() {
     fill(white);
     fontColor = black; 
   }
+  stroke(black); 
+  strokeWeight(2);
   rect(450, 325, 300, 150, 25); 
   fill(fontColor); 
   text("View", width/2, height/2); 
